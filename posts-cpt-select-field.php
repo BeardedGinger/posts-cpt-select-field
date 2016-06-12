@@ -43,7 +43,7 @@ function posts_as_options( $post_type = array(), $field = '', $value = '' ) {
 
   if( $posts->have_posts() ) { ?>
     <select id="<?php echo $field; ?>" name="<?php echo $field; ?>">
-      <option value=''><?php echo $default_option_label; ?></option>
+      <option value=''><?php echo esc_attr( $default_option_label ); ?></option>
       <?php
         while( $posts->have_posts() ) {
           $posts->the_post(); ?>
