@@ -21,7 +21,7 @@ if( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @param  array    $post_type  post type(s) to pull for options
  * @param  string   $field      field id
- * @param  string   $value      the current or default value for this field]
+ * @param  int      $value      the current or default value for this field]
  */
 function posts_as_options( $post_type = array(), $field = '', $value = '' ) {
 
