@@ -7,7 +7,7 @@
  * Author: Bearded Ginger
  * Author URI: http://gingercult.com
  * License: GPL-2.0+
- * Text Domain:
+ * Text Domain: posts_cpt_select_field
  */
 
 // if this file is called directly, abort.
@@ -36,20 +36,25 @@ function posts_as_options( $post_type = array(), $field = '', $value = '' ) {
     'no_found_rows'   => true
   );
 
-  $args = apply_filters( 'posts_as_options_query_args', $args );
+  $args = apply_filters( 'gb_pas_query_args', $args );
+  $default_option_label = apply_filters( 'gb_pas_default_option_' . $field, __( 'Select', 'posts_cpt_select_field' ) );
 
   $posts = new WP_Query( $args );
 
-  if( $posts->have_posts() ) {
-    echo '<select id="' . $field . '" name="' . $field . '">';
-    while( $posts->have_posts() ) {
-      $posts->the_post(); ?>
+  if( $posts->have_posts() ) { ?>
+    <select id="<?php echo $field; ?>" name="<?php echo $field; ?>">
+      <option value=''><?php echo $default_option_label; ?></option>
+      <?php
+        while( $posts->have_posts() ) {
+          $posts->the_post(); ?>
 
-        <option value="<?php echo get_the_ID() ?>" <?php echo selected( $value, get_the_ID() ); ?>><?php the_title(); ?></option>
+            <option value="<?php echo get_the_ID() ?>" <?php echo selected( $value, get_the_ID() ); ?>><?php the_title(); ?></option>
 
-    <?php
-    }
-    echo '</select>';
+        <?php
+        }
+      ?>
+    </select>
+  <?php
   }
 
 }
