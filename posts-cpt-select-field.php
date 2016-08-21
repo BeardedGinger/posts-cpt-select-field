@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Posts and CPT Select Field
- * Plugin URI: http://gingercult.com
+ * Plugin URI: http://limecuda.com
  * Description: Helper function to build a select field of posts, pages, or any CPT as options
  * Version: 1.0.0
- * Author: Bearded Ginger
- * Author URI: http://gingercult.com
+ * Author: Josh Mallard
+ * Author URI: http://fewerthanthree.com
  * License: GPL-2.0+
- * Text Domain: posts_cpt_select_field
+ * Text Domain: lc_cpt_select_field
  */
 
 // if this file is called directly, abort.
@@ -23,7 +23,7 @@ if( ! defined( 'WPINC' ) ) {
  * @param  string   $field      field id
  * @param  int      $value      the current or default value for this field]
  */
-function posts_as_options( $post_type = array(), $field = '', $value = '' ) {
+function lc_posts_as_options( $post_type = array(), $field = '', $value = '' ) {
 
   // If nothing specified, we'll get the posts
   if( 0 == $post_type ) {
@@ -36,8 +36,8 @@ function posts_as_options( $post_type = array(), $field = '', $value = '' ) {
     'no_found_rows'   => true
   );
 
-  $args = apply_filters( 'gb_pas_query_args', $args );
-  $default_option_label = apply_filters( 'gb_pas_default_option_' . $field, __( 'Select', 'posts_cpt_select_field' ) );
+  $args = apply_filters( 'lc_cpt_select_query_args', $args );
+  $default_option_label = apply_filters( 'lc_cpt_default_option_' . $field, __( 'Select', 'lc_cpt_select_field' ) );
 
   $posts = new WP_Query( $args );
 
