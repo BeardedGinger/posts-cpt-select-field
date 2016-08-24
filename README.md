@@ -1,6 +1,8 @@
 # Posts and CPT Select Field
 
-Create a select field with entries from posts, pages, or any custom post type as options for the field
+Create a select field with entries from posts, pages, or any custom post type as options for the field.
+
+Made with <3 by [[http://fewerthanthree.com/wp-content/themes/fewer-than-three/images/lc-logo.png]] for [Fewer Than Three](http://fewerthanthree.com)
 
 ## Usage 
 `<?php lc_posts_as_options( $post_type, $field, $value ); ?>`
